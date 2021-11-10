@@ -7,8 +7,7 @@ clock=pygame.time.Clock()
 width=400
 height=600
 screen = pygame.display.set_mode((width,height))
-  
-#load the images in dict
+
 images={}
 images["bg"] = pygame.image.load("bg.png").convert_alpha()
 images["base"] = pygame.image.load("base.png").convert_alpha()
@@ -21,6 +20,8 @@ score=0
 score_font=pygame.font.Font('freesansbold.ttf', 25)#
 
 class Bee:
+    #Create the score variable here.
+    
     speed=5
     g=0.5
     bee= pygame.Rect(100,250,30,30)
@@ -44,8 +45,7 @@ class Pipe:
     def display(self):
         screen.blit(images["pipe"],self.topPipe)
         screen.blit(images["pipe"],self.bottomPipe)
-        #pygame.draw.rect(screen,(250,150,50),pygame.Rect(200,self.gap,100,100))
-    
+        
     def move(self):
         self.topPipe.x-=5
         self.bottomPipe.x-=5   
@@ -55,6 +55,8 @@ class Pipe:
             self.gap=random.randint(150, 400)
             self.topPipe.y=self.gap-400
             self.bottomPipe.y=self.gap+100
+        #Check if toppipe is at 100 along the x axis and then increment the score.
+
           
 bee=Bee()
 pipe1= Pipe(300)
@@ -97,6 +99,7 @@ while True:
         groundx =groundx-5
         pipe1.move()
         pipe2.move()
+        #Update the following line to show the score using class variable of Pipe class i.e. Pipe.score.
         score_text=score_font.render(str(score), False, (255,255,0))  
         screen.blit(score_text,[200,10]) 
     
@@ -108,8 +111,3 @@ while True:
     screen.blit(images["base"],[groundx,550])
     pygame.display.update()
     clock.tick(30) 
-    
-    
-    
-    
-
