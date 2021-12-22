@@ -20,8 +20,6 @@ score=0
 score_font=pygame.font.Font('freesansbold.ttf', 25)#
 
 class Bee:
-    #Create the score variable here.
-    
     speed=5
     g=0.5
     bee= pygame.Rect(100,250,30,30)
@@ -37,6 +35,9 @@ class Bee:
         screen.blit(images["bee"],self.bee) 
 
 class Pipe:
+    #Create the score variable here.
+    
+    
     def __init__(self,x):
         self.gap=random.randint(150, 400)
         self.topPipe=pygame.Rect(x,self.gap-400,40,320)
